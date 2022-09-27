@@ -35,7 +35,9 @@ protect:
       form: user_edit
       update: user_edit
 ```
-This rights will be added.
+- This rights will be added.
+- If method not set all methods will be allowed /user is ok.
+
 ```
 plugin:
   my:

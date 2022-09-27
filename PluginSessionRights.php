@@ -48,9 +48,11 @@ class PluginSessionRights{
         }
       }else{
         /**
-         * Method not set.
+         * No match in method but methods exist.
          */
-        exit('Rights issue (method missing)!');
+        if($data_rights->get('protect/'.wfGlobals::get('class').'/method')){
+          exit('Rights issue (method missing)!');
+        }
       }
     }
     return null;
