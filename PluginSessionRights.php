@@ -8,14 +8,16 @@ class PluginSessionRights{
     $data_rights = new PluginWfYml($data->get('file'));
     $user = wfUser::getSession();
     $temp = new PluginWfArray();
-    foreach($data_rights->get('rights') as $k => $v){
-      $temp->set($k, false);
-      $i = new PluginWfArray($v);
-      if($i->get('session')){
-        foreach($i->get('session') as $v2){
-          if($user->get($v2)){
-            $temp->set($k, true);
-            break;
+    if($data_rights->get('rights')){
+      foreach($data_rights->get('rights') as $k => $v){
+        $temp->set($k, false);
+        $i = new PluginWfArray($v);
+        if($i->get('session')){
+          foreach($i->get('session') as $v2){
+            if($user->get($v2)){
+              $temp->set($k, true);
+              break;
+            }
           }
         }
       }
